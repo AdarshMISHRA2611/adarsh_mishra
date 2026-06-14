@@ -1,0 +1,74 @@
+The freelancer will build CABBY, a complete online gaming portal, as a frontend-only website. The project has no backend, no database, and requires no API keys. All user data is stored in the browser using localStorage. The freelancer delivers source code on GitHub, a live deployed link, and a README.
+
+Deliverables
+
+  - Public GitHub repository containing all source code organised by the folder layout specified in the instructions document
+  - Live deployed version of the site accessible via a public URL on GitHub Pages or Vercel
+  - README.md in the repository root with setup steps, tech stack used, and the live link
+
+Website pages
+
+The portal has exactly four pages: Home, Game, Leaderboard, and Profile. All pages share a top navigation bar with the CABBY logo, search bar, current streak counter, and Log in button. The Home, Leaderboard, and Profile pages share a left sidebar for game categories.
+
+  - Home page: a "Today's Missions" section above the game grid showing exactly 3 mission cards with checkboxes, followed by a 3-column grid of game cards on desktop with minimum 9 cards on load. Each card shows the game name, a category icon, a rating badge, and an info button. The search bar filters cards in real time by name or genre. The sidebar contains these 10 genre categories in order: All Games (active by default), Trending, Favourites, then a dot separator, then Racing, Puzzle, Action, Runner, Sports, New, Settings. Clicking any category icon filters the grid.
+  - Game page: loads the selected game inside an iframe filling the main content area. Displays the user's highest score for that game above the iframe. Includes a back button, the game title, a Save Score button that stores a manually entered score to localStorage, a Save Bookmark button that stores the current play moment with an optional note, and an Add to Favourites toggle.
+  - Leaderboard page: a tab switcher between "All Scores" and "Your Best" views. The All Scores tab shows saved scores in a table with 4 columns (Rank, Game Name, Score, Date), sorted highest first. The Your Best tab shows one row per game listing the highest score ever recorded for that game. Includes a Clear All Scores button and an empty state message when no scores exist.
+  - Profile page: lets the user set and edit a display name. Shows four stat cards (Games Played, Total Scores Saved, Favourites, Best Streak) and three lists (favourite games, saved bookmarks, best scores per game). Includes a Reset Profile button that clears all localStorage data after confirmation.
+
+Daily missions and streaks
+
+  - The Home page displays exactly 3 missions every day in a "Today's Missions" section above the game grid
+  - All users see the same 3 missions on the same calendar date, chosen from a fixed pool of 10 mission templates
+  - Missions reset at local midnight based on the user's browser timezone
+  - Missions auto-complete when the user performs the required action (no manual check needed)
+  - Completing all 3 missions in a single day increments the streak counter by 1
+  - Missing a day before completing all 3 missions resets the current streak to 0 (best streak is never reset)
+  - A flame icon followed by the current streak number is visible in the top navigation bar on every page
+
+Pause bookmarks
+
+  - The Game page contains a Save Bookmark button next to the Save Score button
+  - Clicking opens an inline note input (max 80 characters) and a Save action
+  - Saving stores a bookmark object to cabby_bookmarks containing id, gameId, gameName, note, date, and the user's last entered score
+  - The Profile page contains a Bookmarks section listing all saved bookmarks with game name, note, and date
+  - Each bookmark has a delete button that removes it from cabby_bookmarks
+  - Clicking a bookmark navigates to the Game page for that bookmarked game
+
+Highest score tracker
+
+  - Saving a score on the Game page automatically updates cabby_best_scores if the new score is higher than the stored best for that game
+  - The Game page displays the current best score above the iframe in the format "Your best: N"
+  - The Leaderboard page provides a tab switcher between "All Scores" and "Your Best" views
+  - The "Your Best" tab shows one row per game with columns: Rank, Game Name, Highest Score, Date achieved
+  - The Profile page shows the count of games with a recorded best score as part of the stats
+
+Technical requirements
+
+  - Built with HTML, CSS, and JavaScript. React is acceptable but not required
+  - No backend server, no database, no Firebase, no third-party authentication, no API keys of any kind
+  - All data persistence uses localStorage, with keys prefixed cabby_
+  - Responsive across screens from 768px to 1440px wide
+  - Must work on the latest versions of Chrome, Firefox, and Edge
+
+Visual requirements
+
+  - Design must follow the layout shown in reference_image.png
+  - Dark theme: page background #1E1E1E, nav bar #2A2A2A, sidebar #252525
+  - Primary green #1D9E75 for action buttons and badges
+  - Logo yellow #F5C842 for the CABBY brand and active sidebar icon
+  - Danger red #E24B4A for delete buttons and the notification badge
+  - The CABBY logo from logo.png must appear in the top-left corner of the navigation bar on every page
+
+Out of scope
+
+  - Building actual games from scratch
+  - Multiplayer, chat, or social features
+  - Payment processing, ads, or monetisation
+  - Mobile app versions for iOS or Android
+  - Admin dashboard or content management system
+  - Third-party authentication services (Google, Facebook, etc.)
+  - Any feature requiring API keys or a backend server
+
+Acceptance criteria
+
+The submission is considered complete only when all four pages are functional, daily missions display and auto-complete correctly, the streak counter increments and resets correctly, bookmarks save and reload correctly, the highest score tracker updates correctly, all localStorage features work, the live link is accessible, the source code is pushed to a public GitHub repository, and the design matches the reference image provided.

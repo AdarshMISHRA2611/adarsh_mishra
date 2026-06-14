@@ -1,0 +1,81 @@
+CABBY Online Gaming Portal, Evaluation Rubrics
+
+1. Home page displays a grid containing at least 9 distinct game cards visible on initial load within the viewport.
+
+2. Home page game card grid renders in exactly 3 columns when the browser viewport width is at least 1024px.
+
+3. Home page game card grid renders in exactly 2 columns when the browser viewport width is from 768px to 1023px inclusive.
+
+4. Every game card on the Home page shows all four of the following elements: game name text, category icon, rating badge with a number, info button.
+
+5. Typing text into the search bar in the top navigation filters the game grid to show cards matching the typed input by name field, by genre field, with the filter updating instantly as the user types.
+
+6. The left sidebar on the Home page contains at least 6 distinct genre category icons that are clickable buttons.
+
+7. Clicking a genre category icon in the left sidebar filters the game grid to show the games tagged with that genre.
+
+8. Clicking any game card on the Home page navigates the user to the Game page for that specific game.
+
+9. The Game page contains an iframe element whose src attribute is set to the URL of the selected game.
+
+10. The Game page contains a visible back button that, when clicked, navigates the user back to the Home page.
+
+11. Clicking the Save Score button on the Game page stores a new entry to localStorage under the key cabby_scores containing the game name, the entered score, the current date.
+
+12. The Add to Favourites button on the Game page acts as a toggle: it adds the game ID to cabby_favourites on the first click, then removes the ID from cabby_favourites on the next click.
+
+13. The Leaderboard page provides a tab switcher with two views labelled "All Scores", "Your Best"; clicking a tab changes the visible table instantly within the same page.
+
+14. Rows in the "All Scores" leaderboard view are sorted by the Score column from highest to lowest, with the highest score appearing at Rank 1.
+
+15. The Leaderboard "All Scores" table renders one row for every entry currently saved in the cabby_scores localStorage array.
+
+16. Clicking the Clear All Scores button on the Leaderboard page shows a confirmation prompt that requires user confirmation to proceed with deletion.
+
+17. The Profile page displays the user's saved display name from cabby_username localStorage in the display name area.
+
+18. The Profile page Edit Name action allows the user to enter a new display name, persisting that name to localStorage under the key cabby_username such that it survives a page reload.
+
+19. The Profile page lists every game name currently present in cabby_favourites, each with its own remove button that updates the cabby_favourites array when clicked.
+
+20. Clicking the Reset Profile button on the Profile page shows a confirmation prompt that requires user confirmation to proceed with clearing all CABBY-related localStorage keys.
+
+21. The CABBY logo image from logo.png is displayed in the top-left corner of the top navigation bar on every page of the website.
+
+22. The colour #1D9E75 is used as the background colour for the Save Score button, the Log in button, the rating badge on game cards.
+
+23. The colour #F5C842 is used in two places: for the CABBY brand text in the navigation bar, for the icon colour of the currently active sidebar category.
+
+24. The colour #E24B4A is used as the background colour for the Clear All Scores button, the Reset Profile button, the notification badge on the bell icon.
+
+25. Every localStorage key used by the website starts with the prefix cabby_ when inspected in browser developer tools.
+
+26. Each entry in the cabby_scores localStorage array is an object containing exactly three fields named game, score, date.
+
+27. The website is accessible via a public URL deployed on a free static host such as GitHub Pages, Vercel.
+
+28. The source code is published in a public GitHub repository containing a README.md file at the repository root.
+
+29. The Home page displays a "Today's Missions" section above the game grid containing exactly 3 mission cards.
+
+30. Two different users opening CABBY on the same calendar date see exactly the same 3 mission texts, drawn deterministically from the fixed pool of 10 mission templates based on the date.
+
+31. Completing all 3 missions in a single day increases the current value stored in cabby_streak by exactly 1.
+
+32. Whenever cabby_streak.current increases, cabby_streak.best is updated to max(best, current).
+
+33. The top navigation bar on every page displays a flame icon followed by the current numeric streak value read from cabby_streak.current.
+
+34. Clicking the Save Bookmark button on the Game page opens an inline text input that accepts up to 80 characters together with a Save action.
+
+35. Submitting the Save Bookmark form stores a new object to the cabby_bookmarks localStorage array containing the fields id, gameId, gameName, note, date, lastScore.
+
+36. The Profile page contains a Bookmarks section that lists every saved bookmark with its game name, note, date.
+
+37. Each bookmark list item on the Profile page has a delete button that removes the corresponding entry from the cabby_bookmarks array when clicked.
+
+38. Clicking the game name of a bookmark on the Profile page navigates the user to the Game page for that bookmarked game.
+
+39. Submitting a higher score than the existing value for a game ID through the Save Score button updates cabby_best_scores by setting that game ID to the new higher score.
+
+40. The Game page displays the user's current best score for the game above the iframe in the format "Your best: N", where N is read from cabby_best_scores for the current game ID.
